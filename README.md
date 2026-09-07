@@ -64,4 +64,6 @@ Each subproject has its own README with detailed setup instructions:
 
 **Zain Wahbi** — Backend & ML Engineer
 [GitHub](https://github.com/Zain-Wahbi) · [LinkedIn](https://linkedin.com/in/zain-wahbi) · [Portfolio](https://zain-wahbi.github.io/zain-wahbi-portfolio)
- [Hussein Alahmad](https://github.com/Hussein89hu)
+
+**Hussein Alahmad**
+[GitHub](https://github.com/Hussein89hu)
