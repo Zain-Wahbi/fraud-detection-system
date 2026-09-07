@@ -1,0 +1,35 @@
+# ===== Laravel (laravel-dashboard) =====
+laravel-dashboard/vendor/
+laravel-dashboard/node_modules/
+laravel-dashboard/.env
+laravel-dashboard/storage/*.key
+laravel-dashboard/storage/framework/cache/*
+laravel-dashboard/storage/framework/sessions/*
+laravel-dashboard/storage/framework/views/*
+laravel-dashboard/storage/logs/*
+laravel-dashboard/database/database.sqlite
+laravel-dashboard/public/hot
+laravel-dashboard/public/storage
+laravel-dashboard/.phpunit.result.cache
+laravel-dashboard/bootstrap/cache/*.php
+
+# ===== Python (ml-api) =====
+ml-api/venv/
+ml-api/__pycache__/
+ml-api/**/__pycache__/
+ml-api/*.pyc
+ml-api/.env
+ml-api/.pytest_cache/
+
+# NOTE: trained_models/ is intentionally NOT ignored here.
+# Large model files inside it are tracked via Git LFS (see .gitattributes).
+
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===== Archives left over from local work (NOT inside trained_models — those are LFS-tracked) =====
+*.rar
+/*.zip

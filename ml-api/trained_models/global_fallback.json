@@ -1,0 +1,15 @@
+{
+  "sender_avg_amount": 358.9342346191406,
+  "sender_std_amount": 416.7304382324219,
+  "sender_degree": 6.5569804,
+  "sender_total_transaction": 6.5570036,
+  "sender_fraud_transaction": 0.0,
+  "sender_fraud_percentage": 0.0,
+  "receiver_degree": 6.5547234,
+  "receiver_total_transaction": 6.5547452,
+  "receiver_fraud_transaction": 0.0,
+  "receiver_fraud_percentage": 0.0,
+  "transaction_per_day": 1.180212,
+  "transaction_gap": 0.0,
+  "amount_to_avg_ratio": 1.0
+}

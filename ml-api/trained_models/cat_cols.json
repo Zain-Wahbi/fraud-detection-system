@@ -1,0 +1,7 @@
+[
+  "transaction_type",
+  "merchant_category",
+  "location",
+  "device_used",
+  "payment_channel"
+]

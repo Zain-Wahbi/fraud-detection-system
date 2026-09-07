@@ -1,0 +1,6 @@
+{
+  "Random Forest": 0.92,
+  "XGBoost": 0.935,
+  "LightGBM": 0.94,
+  "TabNet": 0.82
+}
