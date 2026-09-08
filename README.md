@@ -48,34 +48,42 @@ Four candidate models were trained and evaluated on a held-out test set, each wi
 
 **LightGBM** was selected for production — it achieves the best F1-Score, ROC-AUC, and AP (AUCPR) among all four candidates, with a decision threshold optimized to **0.940**.
 
+<table>
+  <tr>
+    <td align="center"><img src="./model-training/assets/01_class_distribution.png" width="380"/><br/><sub>Class distribution</sub></td>
+    <td align="center"><img src="./model-training/assets/comparison_all_models.png" width="380"/><br/><sub>Model comparison</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="./model-training/assets/roc_curves_all_models.png" width="380"/><br/><sub>ROC curves</sub></td>
+    <td align="center"><img src="./model-training/assets/cm_LightGBM.png" width="380"/><br/><sub>LightGBM confusion matrix</sub></td>
+  </tr>
+</table>
+
 <p align="center">
-  <img src="./model-training/assets/01_class_distribution.png" width="45%" />
-  <img src="./model-training/assets/comparison_all_models.png" width="45%" />
-</p>
-<p align="center">
-  <img src="./model-training/assets/roc_curves_all_models.png" width="45%" />
-  <img src="./model-training/assets/cm_LightGBM.png" width="45%" />
-</p>
-<p align="center">
-  <img src="./model-training/assets/feature_importance_all.png" width="60%" />
+  <img src="./model-training/assets/feature_importance_all.png" width="700"/><br/>
+  <sub>Feature importance across all four models</sub>
 </p>
 
-*Left to right, top to bottom: class distribution (fraud vs. legitimate), model comparison across all metrics, ROC curves for all four models, LightGBM confusion matrix, feature importance. Full analysis in [`model-training/`](./model-training/).*
+Full analysis in [`model-training/`](./model-training/).
 
 ## Dashboard
 
 <p align="center">
-  <img src="./laravel-dashboard/assets/dashboard-overview.png" width="80%" />
-</p>
-<p align="center">
-  <img src="./laravel-dashboard/assets/analytics-charts.png" width="45%" />
-  <img src="./laravel-dashboard/assets/fraud-explanation.png" width="45%" />
-</p>
-<p align="center">
-  <img src="./laravel-dashboard/assets/live-simulation.png" width="80%" />
+  <img src="./laravel-dashboard/assets/dashboard-overview.png" width="700"/><br/>
+  <sub>Dashboard overview</sub>
 </p>
 
-*Top to bottom: dashboard overview, monthly/hourly analytics with Chart.js, per-transaction fraud explanation (risk factors behind a flagged transaction), live transaction simulation.*
+<table>
+  <tr>
+    <td align="center"><img src="./laravel-dashboard/assets/analytics-charts.png" width="380"/><br/><sub>Monthly / hourly analytics (Chart.js)</sub></td>
+    <td align="center"><img src="./laravel-dashboard/assets/fraud-explanation.png" width="380"/><br/><sub>Per-transaction fraud explanation</sub></td>
+  </tr>
+</table>
+
+<p align="center">
+  <img src="./laravel-dashboard/assets/live-simulation.png" width="700"/><br/>
+  <sub>Live transaction simulation</sub>
+</p>
 
 ## Repository Structure
 
@@ -110,6 +118,8 @@ Each subproject has its own README with detailed setup instructions:
 
 **Zain Wahbi** — Backend & ML Engineer
 [GitHub](https://github.com/Zain-Wahbi) · [LinkedIn](https://linkedin.com/in/zain-wahbi) · [Portfolio](https://zain-wahbi.github.io/zain-wahbi-portfolio)
+
+## Contributors
 
 **Hussein Alahmad**
 [GitHub](https://github.com/Hussein89hu)
