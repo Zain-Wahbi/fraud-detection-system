@@ -62,6 +62,21 @@ Four candidate models were trained and evaluated on a held-out test set, each wi
 
 *Left to right, top to bottom: class distribution (fraud vs. legitimate), model comparison across all metrics, ROC curves for all four models, LightGBM confusion matrix, feature importance. Full analysis in [`model-training/`](./model-training/).*
 
+## Dashboard
+
+<p align="center">
+  <img src="./laravel-dashboard/assets/dashboard-overview.png" width="80%" />
+</p>
+<p align="center">
+  <img src="./laravel-dashboard/assets/analytics-charts.png" width="45%" />
+  <img src="./laravel-dashboard/assets/fraud-explanation.png" width="45%" />
+</p>
+<p align="center">
+  <img src="./laravel-dashboard/assets/live-simulation.png" width="80%" />
+</p>
+
+*Top to bottom: dashboard overview, monthly/hourly analytics with Chart.js, per-transaction fraud explanation (risk factors behind a flagged transaction), live transaction simulation.*
+
 ## Repository Structure
 
 ```
