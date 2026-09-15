@@ -120,4 +120,8 @@ Each subproject has its own README with detailed setup instructions:
 [GitHub](https://github.com/Zain-Wahbi) · [LinkedIn](https://linkedin.com/in/zain-wahbi) · [Portfolio](https://zain-wahbi.github.io/zain-wahbi-portfolio)
 
 **Hussein Alahmad**
-[GitHub](https://github.com/Hussein89hu)
+[GitHub](https://github.com/Hussein89hu) · [LinkedIn](https://linkedin.com/in/hussein-alahmad) ·
+
+## License
+
+All rights reserved. See [LICENSE](LICENSE) for details.
