@@ -26,14 +26,22 @@ flowchart LR
 ## Overview
 
 - **Data scale:** 5 million financial transactions
-- **Feature engineering:** 30+ engineered features
+- **Feature engineering:** engineered temporal, behavioral and network-based features
 - **Model selection:** 4 candidate models benchmarked (Random Forest, XGBoost, LightGBM, TabNet) — **LightGBM** selected for production (see [Model Performance](#model-performance) for full metrics)
 - **Serving:** FastAPI service with a 9-step preprocessing pipeline, exposing `predict`, `batch-predict`, `explain`, and `health` endpoints
 - **Dashboard:** Bilingual (Arabic/English) Laravel application with live transaction simulation and Chart.js-based analytics
 
 ## Dataset
 
-The model was trained on the [Financial Transactions Dataset for Fraud Detection](https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection) (Kaggle) — ~5 million transactions. The raw dataset is not included in this repository due to its size; see [`model-training/README.md`](./model-training/README.md) for how to use it.
+The model was trained on the [Financial Transactions Dataset for Fraud Detection](https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection), a public Kaggle dataset of ~5 million transactions. The raw dataset is not included in this repository due to its size; see [`model-training/README.md`](./model-training/README.md) for how to use it.
+
+## Methodology
+
+- **Class imbalance:** fraud is 3.59% of transactions (179,553 fraud vs 4,820,447 legitimate).
+- **Split:** stratified 80/10/10 (train/validation/test), preserving the 3.59% fraud rate in each set.
+- **Imbalance handling:** undersampling of the legitimate class at 3:1, applied to the training set only (fraud share in training rises from 3.59% to about 25%). Validation and test sets keep the real 3.59% rate so metrics reflect production conditions. SMOTE and class weighting were considered and not used, to avoid synthetic fraud patterns and artificial repetition.
+- **Threshold selection:** for each model, the decision threshold was chosen by grid search from 0.05 to 0.95 in steps of 0.005, maximizing the F1-score of the fraud class on the validation set (never on the test set).
+- **Feature engineering:** raw features had very weak correlation with the target; derived temporal, behavioral and network-based features (e.g., account fraud history, interaction features) were much more informative.
 
 ## Model Performance
 
@@ -45,6 +53,11 @@ Four candidate models were trained and evaluated on a held-out test set, each wi
 | XGBoost       |  0.9759  |   0.6062  | 0.9427 |  0.7379  |  0.9918 |   0.7667   |   0.935   |
 | **LightGBM**  |**0.9764**| **0.6138**|**0.9284**|**0.7390**|**0.9919**| **0.7674** | **0.940** |
 | TabNet        |  0.9757  |   0.6077  | 0.9157 |  0.7306  |  0.9914 |   0.7593   |   0.820   |
+
+**Reading the results**
+
+- The three tree-based models are within 0.003 F1 of each other; LightGBM is best by a small margin, so the choice among them is marginal.
+- LightGBM on the test set (500,000 transactions: 17,956 fraud, 482,044 legitimate): 16,671 frauds caught, 1,285 missed, 10,491 false alarms. Precision 0.61 means roughly 4 in 10 alerts are false positives; recall 0.93.
 
 **LightGBM** was selected for production — it achieves the best F1-Score, ROC-AUC, and AP (AUCPR) among all four candidates, with a decision threshold optimized to **0.940**.
 
@@ -65,6 +78,13 @@ Four candidate models were trained and evaluated on a held-out test set, each wi
 </p>
 
 Full analysis in [`model-training/`](./model-training/).
+
+## Limitations
+
+- Evaluated on a single public dataset (Kaggle) with a single train/validation/test split.
+- The API has not been load- or latency-tested.
+- There is no periodic retraining pipeline.
+- The system runs locally and has not been deployed to a production environment.
 
 ## Dashboard
 
@@ -88,14 +108,18 @@ Full analysis in [`model-training/`](./model-training/).
 ## Repository Structure
 
 ```
-fraud-bank/
+fraud-detection-system/
+├── model-training/         # Data analysis, feature engineering, model training and evaluation, result figures
 ├── ml-api/                 # FastAPI inference service + trained models
 ├── laravel-dashboard/      # Bilingual dashboard (Blade + Chart.js)
-├── docs/                   # Diagrams and supporting documentation
+├── .gitattributes
+├── .gitignore
+├── LICENSE
 └── README.md               # You are here
 ```
 
 Each subproject has its own README with detailed setup instructions:
+- [`model-training/README.md`](./model-training/README.md)
 - [`ml-api/README.md`](./ml-api/README.md)
 - [`laravel-dashboard/README.md`](./laravel-dashboard/README.md)
 
@@ -120,7 +144,7 @@ Each subproject has its own README with detailed setup instructions:
 [GitHub](https://github.com/Zain-Wahbi) · [LinkedIn](https://linkedin.com/in/zain-wahbi) · [Portfolio](https://zain-wahbi.github.io/zain-wahbi-portfolio)
 
 **Hussein Alahmad**
-[GitHub](https://github.com/Hussein89hu) · [LinkedIn](https://linkedin.com/in/hussein-alahmad) ·
+[GitHub](https://github.com/Hussein89hu) · [LinkedIn](https://linkedin.com/in/hussein-alahmad)
 
 ## License
 
